@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM | Gerenciar Pedidos</title>
+    <meta name="description"
+        content="Painel administrativo para acompanhar, filtrar e gerenciar pedidos da Feira de Profissoes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <main class="admin-shell">
+        <header class="hero">
+            <div>
+                <p class="hero__eyebrow">Painel administrativo</p>
+                <h1>Gerencie os pedidos da feira</h1>
+                <p>Acompanhe o status dos kits, filtre atendimentos pendentes e organize a retirada com mais clareza.
+                </p>
+            </div>
+
+            <div class="hero-actions">
+                <a class="hero-btn hero-btn--solid text-decoration-none" href="produtos.html">Gerenciar produtos</a>
+                <button class="hero-btn" type="button">Exportar relatorio</button>
+            </div>
+        </header>
+
+        <section class="dashboard">
+            <div class="summary-grid">
+                <article class="summary-card">
+                    <p>Pedidos hoje</p>
+                    <strong>00</strong>
+                </article>
+
+                <article class="summary-card">
+                    <p>Aguardando retirada</p>
+                    <strong>00</strong>
+                    <small>Fila principal</small>
+                </article>
+
+                <article class="summary-card">
+                    <p>Em separacao</p>
+                    <strong>00</strong>
+                    <small>CD em andamento</small>
+                </article>
+
+                <article class="summary-card">
+                    <p>Concluidos</p>
+                    <strong>00</strong>
+                    <small>0% do total</small>
+                </article>
+            </div>
+
+            <div class="workspace">
+                <section>
+                    <div class="orders-panel">
+                        <div class="section-head">
+                            <div>
+                                <p class="section-label">Fila de atendimento</p>
+                                <h2 class="panel-title">Pedidos recentes</h2>
+                            </div>
+                            <p class="table-subtitle">24 resultados encontrados</p>
+                        </div>
+
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Pedido</th>
+                                        <th>Kit</th>
+                                        <th>Status</th>
+                                        <th>Horario</th>
+                                        <th>Acoes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pedidos-container">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="module" src="script/gerenciarPedidos.js"></script>
+</body>
+
+</html>

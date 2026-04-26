@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM | Gerenciar Produtos</title>
+    <meta name="description" content="Painel administrativo para cadastrar produtos, movimentar estoque e baixar itens por kit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <main class="admin-shell">
+        <header class="hero">
+            <div>
+                <p class="hero__eyebrow">Painel administrativo</p>
+                <h1>Gerencie produtos e estoque</h1>
+                <p>Cadastre itens, registre entrada e saida e automatize a baixa dos produtos de cada kit pela configuracao do codigo.</p>
+            </div>
+
+            <div class="hero-actions">
+                <a class="hero-btn hero-btn--solid text-decoration-none" href="index.html">Ver pedidos</a>
+                <button class="hero-btn" type="button" id="recarregarProdutos">Atualizar estoque</button>
+            </div>
+        </header>
+
+        <section class="dashboard">
+            <div id="alert-container"></div>
+
+            <div class="summary-grid summary-grid--three">
+                <article class="summary-card">
+                    <p>Produtos cadastrados</p>
+                    <strong id="totalProdutos">00</strong>
+                </article>
+
+                <article class="summary-card">
+                    <p>Itens em estoque</p>
+                    <strong id="totalEstoque">00</strong>
+                </article>
+
+                <article class="summary-card">
+                    <p>Produtos em alerta</p>
+                    <strong id="totalBaixoEstoque">00</strong>
+                    <small>Estoque menor ou igual a 5</small>
+                </article>
+            </div>
+
+            <div class="workspace workspace--products">
+                <section class="forms-column">
+                    <div class="filters-panel">
+                        <div class="section-head">
+                            <div>
+                                <p class="section-label">Cadastro</p>
+                                <h2 class="panel-title">Cadastrar ou atualizar produto</h2>
+                            </div>
+                        </div>
+
+                        <form id="produtoForm" class="filters-grid filters-grid--products">
+                            <div class="field">
+                                <label for="codigoProduto">Codigo do produto</label>
+                                <input id="codigoProduto" type="text" placeholder="Ex.: LAPIS">
+                            </div>
+
+                            <div class="field">
+                                <label for="nomeProduto">Nome do produto</label>
+                                <input id="nomeProduto" type="text" placeholder="Ex.: Lapis HB">
+                            </div>
+
+                            <div class="field">
+                                <label for="categoriaProduto">Categoria</label>
+                                <input id="categoriaProduto" type="text" placeholder="Ex.: Papelaria">
+                            </div>
+
+                            <div class="field">
+                                <label for="estoqueProduto">Estoque inicial</label>
+                                <input id="estoqueProduto" type="number" min="0" placeholder="0">
+                            </div>
+                        </form>
+
+                        <div class="filters-actions">
+                            <button class="filter-btn filter-btn--solid" type="button" id="salvarProdutoBtn">Salvar produto</button>
+                        </div>
+                    </div>
+
+                    <div class="filters-panel">
+                        <div class="section-head">
+                            <div>
+                                <p class="section-label">Movimentacao</p>
+                                <h2 class="panel-title">Entrada e saida manual</h2>
+                            </div>
+                        </div>
+
+                        <form id="movimentacaoForm" class="filters-grid filters-grid--products">
+                            <div class="field">
+                                <label for="codigoMovimentacao">Produto</label>
+                                <select id="codigoMovimentacao"></select>
+                            </div>
+
+                            <div class="field">
+                                <label for="tipoMovimentacao">Tipo</label>
+                                <select id="tipoMovimentacao">
+                                    <option value="entrada">Entrada</option>
+                                    <option value="saida">Saida</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="quantidadeMovimentacao">Quantidade</label>
+                                <input id="quantidadeMovimentacao" type="number" min="1" placeholder="1">
+                            </div>
+
+                            <div class="field">
+                                <label for="observacaoMovimentacao">Observacao</label>
+                                <input id="observacaoMovimentacao" type="text" placeholder="Ex.: ajuste de estoque">
+                            </div>
+                        </form>
+
+                        <div class="filters-actions">
+                            <button class="filter-btn filter-btn--solid" type="button" id="movimentarProdutoBtn">Registrar movimentacao</button>
+                        </div>
+                    </div>
+
+                    <div class="filters-panel">
+                        <div class="section-head">
+                            <div>
+                                <p class="section-label">Baixa por kit</p>
+                                <h2 class="panel-title">Dar saida automatica dos produtos do kit</h2>
+                            </div>
+                        </div>
+
+                        <form id="kitForm" class="filters-grid filters-grid--products">
+                            <div class="field">
+                                <label for="kitSelect">Kit</label>
+                                <select id="kitSelect"></select>
+                            </div>
+
+                            <div class="field">
+                                <label for="quantidadeKit">Quantidade de kits</label>
+                                <input id="quantidadeKit" type="number" min="1" value="1">
+                            </div>
+                        </form>
+
+                        <div class="filters-actions">
+                            <button class="filter-btn filter-btn--solid" type="button" id="aplicarKitBtn">Aplicar saida do kit</button>
+                        </div>
+
+                        <div class="kit-preview">
+                            <p class="section-label">Configuracao ativa do kit</p>
+                            <div id="kitPreview" class="kit-preview__list"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="orders-panel">
+                    <div class="section-head">
+                        <div>
+                            <p class="section-label">Estoque atual</p>
+                            <h2 class="panel-title">Produtos cadastrados</h2>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Estoque</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="produtosContainer"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="code-panel">
+                        <div class="section-head">
+                            <div>
+                                <p class="section-label">Configuracao em codigo</p>
+                                <h2 class="panel-title">Linhas que controlam a baixa por kit</h2>
+                            </div>
+                        </div>
+                        <p class="table-subtitle">Edite a constante <code>KIT_CONFIG</code> em <code>ADM/script/gerenciarProdutos.js</code>.</p>
+                        <pre id="kitConfigCode" class="code-block"></pre>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="module" src="script/gerenciarProdutos.js"></script>
+</body>
+
+</html>

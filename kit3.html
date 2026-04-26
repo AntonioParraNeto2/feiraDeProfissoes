@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit da Feira de Profissões</title>
+  <meta name="description"
+    content="Página mobile para apresentar os itens de um kit da Feira de Profissões e orientar a retirada no CD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="watermark" aria-hidden="true">Parra</div>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero__badge">Feira de Profissões 2026</div>
+      <p class="hero__eyebrow">Kit identificado com sucesso</p>
+      <h1>Confira o que você ganhou, onde retirar e faça o seu pedido</h1>
+      <p class="hero__description">
+        Este QR code leva você direto para as informações do seu kit. Aqui a pessoa
+        entende o conteúdo recebido e segue para retirada no <strong>CD</strong>,
+        acompanhando a proposta logística do projeto.
+      </p>
+    </header>
+
+    <main class="content">
+      <section class="kit-card">
+        <div class="kit-card__top">
+          <div>
+            <p class="section-label">Kit do participante</p>
+            <h2>Kit Azul - Mesa 04</h2>
+          </div>
+          <span class="status-chip">Disponível para retirada</span>
+        </div>
+
+        <div class="pickup-box">
+          <div class="pickup-box__icon" aria-hidden="true">CD</div>
+          <div>
+            <p class="pickup-box__label">Local de retirada</p>
+            <strong>Centro de Distribuição da feira</strong>
+            <p class="pickup-box__text">
+              Apresente este QR code no ponto de entrega para receber o kit.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-tile">
+            <p>Onde retirar</p>
+            <strong>Sala 05</strong>
+          </article>
+          <article class="info-tile">
+            <p>Horário</p>
+            <strong>09:00 às 17:00</strong>
+          </article>
+          <article class="info-tile">
+            <p>Status</p>
+            <strong>Separado no estoque</strong>
+          </article>
+          <button class="info-tile" id="btnModalPedido">
+            <p>Fazer Pedido</p>
+            <strong>Clique aqui para fazer pedido</strong>
+          </button>
+        </div>
+      </section>
+
+      <section class="items-section">
+        <div class="section-heading">
+          <p class="section-label">Conteúdo do kit</p>
+          <h2>Itens reservados para este participante</h2>
+        </div>
+
+        <div class="item-list">
+          <article class="item-card">
+            <span class="item-card__count">01</span>
+            <div>
+              <h3>Lápis 1</h3>
+              <p>Item demonstrativo do kit entregue ao visitante.</p>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <span class="item-card__count">02</span>
+            <div>
+              <h3>Lápis 2</h3>
+              <p>Exemplo de produto conferido antes da retirada no CD.</p>
+            </div>
+          </article>
+
+          <article class="item-card">
+            <span class="item-card__count">03</span>
+            <div>
+              <h3>Lápis 3</h3>
+              <p>Modelo de item cadastrado para apresentar a logística do projeto.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="section-heading">
+          <p class="section-label">Fluxo logístico</p>
+          <h2>Como o kit chega até a retirada</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-step">
+            <span>1</span>
+            <div>
+              <h3>Leitura do QR code</h3>
+              <p>O visitante acessa a página do kit direto da mesa do evento.</p>
+            </div>
+          </article>
+
+          <article class="timeline-step">
+            <span>2</span>
+            <div>
+              <h3>Confirmação dos itens</h3>
+              <p>A página mostra o conteúdo reservado e o status da separação.</p>
+            </div>
+          </article>
+
+          <article class="timeline-step">
+            <span>3</span>
+            <div>
+              <h3>Retirada no CD</h3>
+              <p>Com a senha ou QR em mãos, o participante vai ao ponto de entrega.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="text-black">
+        Contato:
+        <a href="mailto:antonioparra0508@gmail.com">antonioparra0508@gmail.com</a>
+      </p>
+      <a class="instagram-link" href="https://www.instagram.com/a_parra111" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-instagram"></i> Seguir no instagram
+      </a>
+    </footer>
+  </div>
+
+  <!-- Modal para fazer o pedido -->
+  <div class="modal" tabindex="-1" id="modalFazerPedido">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Fazer Pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="m-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+            </div>
+            <div class="m-3">
+              <label for="email" class="form-label">Cargo</label>
+              <input type="email" class="form-control" id="email" placeholder="Seu cargo">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+          <button type="button" class="btn btn-primary" id="btnFazerPedido">Fazer Pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src="scripts/modal.js"></script>
+  <script type="module" src="scripts/cadastro.js"></script>
+</body>
+
+</html>
