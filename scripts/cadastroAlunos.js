@@ -10,9 +10,9 @@ btnFazerPedido.addEventListener("click", function () {
 
 async function fazerPedido() {
     let nome = document.querySelector("#nome").value;
-    let cargo = document.querySelector("#email").value;
+    let serie = document.querySelector("#email").value;
 
-    let pessoa = new Pessoas(nome, cargo);
+    let pessoa = new Pessoas(nome, '', '', serie);
     await pessoa.salvar();
     await pessoa.fazer_pedido();
 

@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM | Gerenciar Pedidos</title>
-    <meta name="description"
-        content="Painel administrativo para acompanhar, filtrar e gerenciar pedidos da Feira de Profissoes.">
+    <title>ADM | Expedicao de Pedidos</title>
+    <meta name="description" content="Painel administrativo para acompanhar os pedidos em expedicao.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,20 +14,20 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 
-<body data-painel="pedidos">
+<body data-painel="expedicao">
     <main class="admin-shell">
         <header class="hero">
             <div>
                 <p class="hero__eyebrow">Painel administrativo</p>
-                <h1>Gerencie os pedidos da feira</h1>
-                <p>Acompanhe o status dos kits, mova os pedidos entre etapas e mantenha o estoque ligado ao fluxo real.</p>
+                <h1>Libere os pedidos para retirada</h1>
+                <p>Veja os pedidos prontos na expedicao e conclua a retirada com o historico completo.</p>
             </div>
 
             <div class="hero-actions">
-                <a class="hero-btn hero-btn--solid text-decoration-none" href="index.html">Pedidos</a>
+                <a class="hero-btn text-decoration-none" href="index.html">Pedidos</a>
                 <a class="hero-btn text-decoration-none" href="separacao.html">Separacao</a>
-                <a class="hero-btn text-decoration-none" href="expedicao.html">Expedicao</a>
-                <a class="hero-btn text-decoration-none" href="produtos.html">Gerenciar produtos</a>
+                <a class="hero-btn hero-btn--solid text-decoration-none" href="expedicao.html">Expedicao</a>
+                <a class="hero-btn text-decoration-none" href="produtos.html">Produtos</a>
             </div>
         </header>
 
@@ -50,7 +49,7 @@
                 <article class="summary-card">
                     <p>Em separacao</p>
                     <strong id="resumoSeparacao">00</strong>
-                    <small>CD em andamento</small>
+                    <small>Em preparo</small>
                 </article>
 
                 <article class="summary-card">
@@ -72,7 +71,7 @@
                         <div class="section-head">
                             <div>
                                 <p class="section-label">Fila de atendimento</p>
-                                <h2 class="panel-title" id="panel-title">Pedidos recebidos</h2>
+                                <h2 class="panel-title" id="panel-title">Pedidos em expedicao</h2>
                             </div>
                             <p class="table-subtitle" id="table-subtitle">0 resultado(s) encontrados</p>
                         </div>

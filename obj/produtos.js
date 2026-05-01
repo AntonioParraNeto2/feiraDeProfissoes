@@ -114,15 +114,18 @@ class Produtos {
                 const quantidadeNecessaria = item.quantidade * quantidadeNumerica;
                 const estoqueAtual = Number(produto.estoque) || 0;
 
-                if (estoqueAtual < quantidadeNecessaria) {
+                if (estoqueAtual <= 0) {
                     throw new Error(`Estoque insuficiente para ${produto.nome}.`);
                 }
+
+                const quantidadeBaixada = Math.min(estoqueAtual, quantidadeNecessaria);
 
                 return {
                     produto,
                     quantidadeNecessaria,
+                    quantidadeBaixada,
                     estoqueAtual,
-                    estoqueFinal: estoqueAtual - quantidadeNecessaria
+                    estoqueFinal: Math.max(estoqueAtual - quantidadeNecessaria, 0)
                 };
             })
         );
@@ -134,7 +137,7 @@ class Produtos {
                     codigo: item.produto.codigo,
                     nome: item.produto.nome,
                     tipo: 'saida',
-                    quantidade: item.quantidadeNecessaria,
+                    quantidade: item.quantidadeBaixada,
                     estoqueAnterior: item.estoqueAtual,
                     estoqueAtual: item.estoqueFinal,
                     observacao: `Baixa automatica do ${nomeKit}`,

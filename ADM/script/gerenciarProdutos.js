@@ -1,23 +1,7 @@
 import Produtos from '../../obj/produtos.js';
+import KIT_CONFIG from '../../obj/kitConfig.js';
 
 const produtosApi = new Produtos();
-
-const KIT_CONFIG = {
-    'kit aluno': [
-        { codigo: 'LAPIS', quantidade: 1 },
-        { codigo: 'CADERNO', quantidade: 1 },
-        { codigo: 'BORRACHA', quantidade: 1 }
-    ],
-    'kit convidado': [
-        { codigo: 'CANETA', quantidade: 1 },
-        { codigo: 'BLOCO', quantidade: 1 }
-    ],
-    'kit coordenação': [
-        { codigo: 'CANETA', quantidade: 2 },
-        { codigo: 'CRACHA', quantidade: 1 },
-        { codigo: 'PRANCHETA', quantidade: 1 }
-    ]
-};
 
 const alertContainer = document.getElementById('alert-container');
 const produtosContainer = document.getElementById('produtosContainer');
